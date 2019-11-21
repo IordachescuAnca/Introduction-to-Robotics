@@ -5,4 +5,4 @@ In this folder I publish all the code I have written for "Introduction to Roboti
 
 [Laboratory 3 - KnockDetection](https://github.com/IordachescuAnca/Introduction-to-Robotics/tree/master/Lab-Homework/KnockDetection): Detecting knocks using a passive buzzer. Five seconds after knock, it starts a tone using an active buzzer. The tone can be stopped pressing the button.
 
-[Laboratory4 - 4 digit 7-segment display](https://github.com/IordachescuAnca/Introduction-to-Robotics/blob/master/Lab-Homework/4digitsSevenSegmentDisplay.ino):Controlling each digit of the segment with the joystick.
+[Laboratory4 - 4 digit 7-segment display](https://github.com/IordachescuAnca/Introduction-to-Robotics/blob/master/Lab-Homework/4digitsSevenSegmentDisplay.ino): Controlling each digit of the segment with the joystick.
