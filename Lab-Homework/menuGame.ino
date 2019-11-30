@@ -39,27 +39,30 @@ int score = 0;
 int flagScore = 0;
 int startGameTime = 0;
 int previousStartGameTime = 0;
+int firstGameTime = 0;
 int interval = 5000;
+int intervalWin = 10000;
 int highScore = 0;
+int flagWin = 0;
 
 void displayMenu(int contor){
     if(contor == 1){
     lcd.setCursor(0,0);
     lcd.print(">Start    Setup ");
     lcd.setCursor(0,1);
-    lcd.print(" high Score");
+    lcd.print("   high Score");
   }
   else if(contor == 2){
     lcd.setCursor(0,0);
     lcd.print(" Start   >Setup");
     lcd.setCursor(0,1);
-    lcd.print(" high Score");
+    lcd.print("   high Score");
   }
   else if(contor == 3){
     lcd.setCursor(0,0);
     lcd.print(" Start    Setup");
     lcd.setCursor(0,1);
-    lcd.print(">high Score");
+    lcd.print("  >high Score");
   }
 }
 
@@ -134,24 +137,34 @@ void loop() {
       startGameTime = millis();
       if(flagScore == 0){
         previousStartGameTime = startGameTime;
+        firstGameTime = startGameTime;
         flagScore = 1;
       }
       if(startGameTime - previousStartGameTime >= interval){
         contorLevel++;
         previousStartGameTime = startGameTime;
       }
-      
-      lcd.setCursor(0, 0);
-      lcd.print("Lives:3");
-      lcd.print(" Level:");
-      lcd.print(contorLevel);
-      lcd.setCursor(0,1);
-      score = 3 * contorLevel;
-      lcd.print("Score:");
-      lcd.print(score);
-      highScore = getScore();
-      if(score > highScore){
-        setScore(score);
+      if(startGameTime - firstGameTime >= intervalWin){
+        lcd.setCursor(0,0);
+        lcd.print("Congratulations!");
+        lcd.setCursor(0,1);
+        lcd.print("Press to exit");
+        flagWin = 1;
+      }
+
+      if(flagWin == 0){
+        lcd.setCursor(0, 0);
+        lcd.print("Lives:3");
+        lcd.print(" Level:");
+        lcd.print(contorLevel);
+        lcd.setCursor(0,1);
+        score = 3 * contorLevel;
+        lcd.print("Score:");
+        lcd.print(score);
+        highScore = getScore();
+        if(score > highScore){
+          setScore(score);
+        }
       }
     }
     if(contor == 2){
