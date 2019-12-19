@@ -20,4 +20,4 @@ The Matrix Game that I implemented is called Tetris.
 - Lives: The player has 3 lives. It has the chance to play the game without resetting the score until it loses all his lives. When it loses all his chances, the player is asked if it wants to play again or to go back to the game menu.
 - HighScore: The highscore and the player that reached the highscore will be kept in memory(*EEPROM*). The HighScore can be reset.
 
-PS: While you will navigate through menu, a smiley face is displayed. :)
+PS: While you are navigating through game menu, a smiley face is displayed. :)
