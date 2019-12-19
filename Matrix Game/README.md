@@ -1,5 +1,7 @@
 ***Matrix Game***
 
+[Video](https://www.youtube.com/watch?v=tUaifLaPN-A&t=6s) 
+
 The Matrix Game that I implemented is called Tetris.
 
 **Description of the project**: The purpose of the game is destroying lines of block before it reaches the top. There are four-connected blocks that will fall down and the player has to choose the rotation that create lines that fill the box horizontally, this will clear the lines of blocks.
@@ -17,3 +19,5 @@ The Matrix Game that I implemented is called Tetris.
 - Progress: is represented by speed. From the easy level to hard level it will increase the speed. In this way, the herd level will be 3 times faster than the first one and the medium level will be 2 times faster than the first one.
 - Lives: The player has 3 lives. It has the chance to play the game without resetting the score until it loses all his lives. When it loses all his chances, the player is asked if it wants to play again or to go back to the game menu.
 - HighScore: The highscore and the player that reached the highscore will be kept in memory(*EEPROM*). The HighScore can be reset.
+
+PS: While you will navigate through menu, a smiley face is displayed. :)
