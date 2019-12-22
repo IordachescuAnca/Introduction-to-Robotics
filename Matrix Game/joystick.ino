@@ -25,7 +25,7 @@ void Joystick::readValues(){
 }
 
 bool Joystick::isRight(){
-  if(this->xValue < minTreshold && !this->isMovedX){
+  if (this->xValue < minTreshold && !this->isMovedX){
     this->isMovedX = true;
     return true;
   }
@@ -33,7 +33,7 @@ bool Joystick::isRight(){
 }
 
 bool Joystick::isLeft(){
-  if(this->xValue > maxTreshold && !this->isMovedX){
+  if (this->xValue > maxTreshold && !this->isMovedX){
     this->isMovedX = true;
     return true;
   }
@@ -41,7 +41,7 @@ bool Joystick::isLeft(){
 }
 
 bool Joystick::isDown(){
-  if(this->yValue < minTreshold && !this->isMovedY){
+  if (this->yValue < minTreshold && !this->isMovedY){
     this->isMovedY = true;
     return true;
   }
@@ -49,7 +49,7 @@ bool Joystick::isDown(){
 }
 
 bool Joystick::isUp(){
-  if(this->yValue > maxTreshold && !this->isMovedY){
+  if (this->yValue > maxTreshold && !this->isMovedY){
     this->isMovedY = true;
     return true;
   }
@@ -57,10 +57,10 @@ bool Joystick::isUp(){
 }
 
 void Joystick::checkMove(){
-  if(minTreshold <= this->xValue && this->xValue <= maxTreshold){
+  if (minTreshold <= this->xValue && this->xValue <= maxTreshold){
     this->isMovedX = false;
   }
-  if(minTreshold <= this->yValue && this->yValue <= maxTreshold){
+  if (minTreshold <= this->yValue && this->yValue <= maxTreshold){
     this->isMovedY = false;
   }
 }
@@ -75,9 +75,9 @@ void Joystick::goBackMenu(){
 
 bool Joystick::clickedOn(){
   bool itChanged = false;
-  if(this->swState != this->lastSwState){
-    if(this->swState == LOW){
-      if(this->numberDisplay < 3){
+  if (this->swState != this->lastSwState){
+    if (this->swState == LOW){
+      if (this->numberDisplay < 3){
       this->numberDisplay++;
       }
       itChanged = true;
