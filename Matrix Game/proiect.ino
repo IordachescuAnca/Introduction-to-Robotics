@@ -45,10 +45,13 @@ bool beginning = 1;
 void setup(){
   lcdInit();
   lcInit();
+  
   randomSeed(analogRead(0));
+  
   Serial.begin(9600);
 }
 void loop(){
+  
  if(beginning){
   introduction();
   lcd.clear();
@@ -57,17 +60,17 @@ void loop(){
  J.readValues();
  J.checkMove();
  
- if(J.whichDisplay()){
-    if(!(J.whichDisplay() == 2 && contorX == 1 && lives)){
+ if (J.whichDisplay()){
+    if (!(J.whichDisplay() == 2 && contorX == 1 && lives)){
       displaySmile();
     }
-    if(J.whichDisplay() == 1){
+    if (J.whichDisplay() == 1){
        if(J.isLeft()){
-        if(contorX > 1){
+        if (contorX > 1){
          contorX--;
         }
        }
-     if(J.isRight()){
+     if (J.isRight()){
       if(contorX < 4){
         contorX++;
       }
@@ -75,16 +78,16 @@ void loop(){
      menuOptions(contorX);
      if(J.clickedOn()) lcd.clear();
     }
-    if(J.whichDisplay() == 2 && contorX == 2){
+    if (J.whichDisplay() == 2 && contorX == 2){
       setUpChoice = 1;
-      if(J.isLeft()) setUpChoice = 1;
-      if(J.isRight()) setUpChoice = 0;
-      if(setUpChoice){
-        if(J.isUp() && contorY < 3){
+      if (J.isLeft()) setUpChoice = 1;
+      if (J.isRight()) setUpChoice = 0;
+      if (setUpChoice){
+        if (J.isUp() && contorY < 3){
           contorY++;
           lcd.clear();
         }
-        if(J.isDown() && contorY > 1){
+        if (J.isDown() && contorY > 1){
           contorY--;
           lcd.clear();
         }
@@ -97,17 +100,17 @@ void loop(){
       }
     } 
     
-    if(J.whichDisplay() == 1 && contorX == 4){
+    i f(J.whichDisplay() == 1 && contorX == 4){
       J.goBackMenu();
       lcd.clear();
       contorX = 1;
     }
-    if(J.whichDisplay() == 2 && contorX == 3){
-      if(J.isRight()) highScoreChoice = 0;
-      if(J.isLeft()) highScoreChoice = 1;
+    if (J.whichDisplay() == 2 && contorX == 3){
+      if (J.isRight()) highScoreChoice = 0;
+      if (J.isLeft()) highScoreChoice = 1;
       highScoreMenu(highScoreChoice);
-      if(J.isUp()){
-        if(!highScoreChoice){
+      if (J.isUp()){
+        if (!highScoreChoice){
           J.goBackMenu();
           lcd.clear();
         }
@@ -117,15 +120,15 @@ void loop(){
         }
       }
     }
-    if(J.whichDisplay() == 2 && contorX == 1 && lives == 0){
+    if (J.whichDisplay() == 2 && contorX == 1 && lives == 0){
 
       firstScreenTime = millis();
-      if(flag == 0){
+      if (flag == 0){
         lastFirstScreenTime = firstScreenTime;
         flag = 1;
       }
-      if(firstScreenTime - lastFirstScreenTime >= intervalScreen){
-        if(flag1 == 0){
+      if (firstScreenTime - lastFirstScreenTime >= intervalScreen){
+        if (flag1 == 0){
           lcd.clear();
           flag1 = 1;
         }
@@ -133,11 +136,11 @@ void loop(){
         lcd.print("Choose L-go back");
         lcd.setCursor(0, 1);
         lcd.print("R-try again");
-        if(J.isLeft()){
+        if (J.isLeft()){
           lcd.clear();
           J.goBackMenu();
         }
-        if(J.isRight()){
+        if (J.isRight()){
           lives = 3;
         }
       }
@@ -153,9 +156,9 @@ void loop(){
       flag = 0;
       flag1 = 0;
     }
-    if(J.whichDisplay() == 2 && contorX == 1 && lives){
+    if (J.whichDisplay() == 2 && contorX == 1 && lives){
           startGameTime = millis();
-          if(flagStartGame == 0){
+          if (flagStartGame == 0){
             lcd.clear();
             previousStartGameTime = startGameTime;
             lcInit();
@@ -165,13 +168,13 @@ void loop(){
           }
           lcdPlay(lives, score);
           
-          if(startGameTime - previousStartGameTime >= interval/contorY){
-            if(hasStarted == 0){
+          if (startGameTime - previousStartGameTime >= interval/contorY){
+            if (hasStarted == 0){
               linesErased = removeLines();
-              if(linesErased){
+              if (linesErased){
                 score += linesErased * sizeMatr * contorY;
                 getHighScore = getScore();
-                if(score > getHighScore){
+                if (score > getHighScore){
                   setScore(score);
                 }
               }
@@ -179,7 +182,7 @@ void loop(){
               column = random() % positionBlock;
               actualBlock = random() % numberBlock;
               rotation = random() % numberBlock;
-              if(checkDraw(actualBlock, line, column, rotation)){
+              if (checkDraw(actualBlock, line, column, rotation)){
                 drawBlock(actualBlock, line, column, true, rotation);
               }
               else{
@@ -191,7 +194,7 @@ void loop(){
             }
             else{
               drawBlock(actualBlock, line, column, false, rotation);
-              if(checkDraw(actualBlock, line+1, column, rotation)){
+              if (checkDraw(actualBlock, line+1, column, rotation)){
                 line++;
               }
               else{
@@ -202,23 +205,23 @@ void loop(){
             previousStartGameTime = startGameTime;
           }
     
-          if(J.isRight()){
+          if (J.isRight()){
             drawBlock(actualBlock, line, column, false, rotation);
-            if(column - 1 >= 0 && checkDraw(actualBlock, line, column-1, rotation)){
+            if (column - 1 >= 0 && checkDraw(actualBlock, line, column-1, rotation)){
               column--;
             }
             drawBlock(actualBlock, line, column, true, rotation);
           }
     
-          if(J.isLeft()){
+          if (J.isLeft()){
             drawBlock(actualBlock, line, column, false, rotation);
-            if(column + 1 < sizeMatr && checkDraw(actualBlock, line, column+1, rotation)){
+            if (column + 1 < sizeMatr && checkDraw(actualBlock, line, column+1, rotation)){
               column++;
             }
             drawBlock(actualBlock, line, column, true, rotation);
           }
     
-          if(J.isDown()){
+          if (J.isDown()){
             drawBlock(actualBlock, line, column, false, rotation);
             if(checkDraw(actualBlock, line+1, column, rotation)){
               line++;
@@ -239,7 +242,7 @@ void loop(){
     
   }
    else{
-    if(J.clickedOn()) lcd.clear();
+    if (J.clickedOn()) lcd.clear();
     startMenu();
     displaySmile();
    }
