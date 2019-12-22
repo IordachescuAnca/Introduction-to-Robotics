@@ -23,25 +23,25 @@ void startMenu(){
 }
 
 void menuOptions(int choice){
-  if(choice == 1){
+  if (choice == 1){
     lcd.setCursor(0, 0);
     lcd.print(">Play  Setup");
     lcd.setCursor(0, 1);
     lcd.print(" HighScore  Exit");
   }
-  if(choice == 2){
+  if (choice == 2){
     lcd.setCursor(0, 0);
     lcd.print(" Play >Setup");
     lcd.setCursor(0, 1);
     lcd.print(" HighScore  Exit");
   }
-  if(choice == 3){
+  if (choice == 3){
     lcd.setCursor(0, 0);
     lcd.print(" Play  Setup");
     lcd.setCursor(0, 1);
     lcd.print(">HighScore  Exit");
   }
-  if(choice == 4){
+  if (choice == 4){
     lcd.setCursor(0, 0);
     lcd.print(" Play  Setup");
     lcd.setCursor(0, 1);
@@ -50,15 +50,15 @@ void menuOptions(int choice){
 }
 
 void setUp(int level, bool choice){
-  if(choice){
+  if (choice){
     lcd.setCursor(0, 0);
-    if(level == 1){
+    if (level == 1){
       lcd.print(">Level: Easy");
     }
-    if(level == 2){
+    if (level == 2){
       lcd.print(">Level: Medium");
     }
-    if(level == 3){
+    if (level == 3){
       lcd.print(">Level: Hard");
     }
     lcd.setCursor(0, 1);
@@ -67,13 +67,13 @@ void setUp(int level, bool choice){
   else
   {
     lcd.setCursor(0, 0);
-    if(level == 1){
+    if (level == 1){
       lcd.print(" Level: Easy");
     }
-    if(level == 2){
+    if (level == 2){
       lcd.print(" Level: Medium");
     }
-    if(level == 3){
+    if (level == 3){
       lcd.print(" Level: Hard");
     }
     lcd.setCursor(0, 1);
@@ -83,7 +83,7 @@ void setUp(int level, bool choice){
 }
 
 void highScoreMenu(bool choice){
-  if(choice){
+  if (choice){
     lcd.setCursor(0,0);
     lcd.print("HighScore: ");
     getHighScore = getScore();
@@ -104,7 +104,7 @@ void highScoreMenu(bool choice){
 }
 
 void lcdPlay(int lives, int score){
-  if(lives > 0){
+  if (lives > 0){
     lcd.setCursor(0, 0);
     lcd.print("Lives:");
     lcd.print(lives);
@@ -114,6 +114,8 @@ void lcdPlay(int lives, int score){
   }
 }
 
+
+//I used here DELAY because at the beginning of the game menu I will display only the info about the game(so it doesn't interrupt anything)
 void introduction(){
   lcd.clear();
   lcd.setCursor(0,0);
